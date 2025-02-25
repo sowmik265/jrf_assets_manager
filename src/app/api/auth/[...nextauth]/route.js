@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import pool from "@/lib/db"; // Import MySQL connection
+import pool from "@/lib/db";
 
 export const authOptions = {
   providers: [
@@ -52,6 +52,5 @@ export const authOptions = {
   },
 };
 
-// ✅ Fix: Export `GET` and `POST` handlers properly
 export const GET = NextAuth(authOptions);
 export const POST = NextAuth(authOptions);

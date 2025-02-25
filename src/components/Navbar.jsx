@@ -1,32 +1,3 @@
-// "use client";
-// import { signOut, useSession } from "next-auth/react";
-// import { useRouter } from "next/navigation"; // Import useRouter
-
-// export default function Navbar() {
-//   const { data: session } = useSession(); // Get user session
-//   const router = useRouter(); // Initialize router
-
-//   const handleLogout = async () => {
-//     await signOut({ redirect: false }); // Prevent auto redirection
-//     router.push("/"); // Redirect to base URL (you can change this to any route)
-//   };
-
-//   return (
-//     <nav className="bg-gray-800 text-white p-4 flex justify-between">
-//       <div className="font-bold">JRF Assets Manager</div>
-      
-//       {session && (
-//         <button
-//           onClick={handleLogout}
-//           className="bg-red-500 px-4 py-2 rounded hover:bg-red-700"
-//         >
-//           Logout
-//         </button>
-//       )}
-//     </nav>
-//   );
-// }
-
 "use client";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";

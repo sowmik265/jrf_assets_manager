@@ -1,10 +1,8 @@
-"use client"
-
 import Navbar from "@/components/Navbar";
-import { useSession } from "next-auth/react";
-
-export default function UserDashboard() {
-  const { data: session } = useSession();
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+export default async function UserDashboard() {
+  const session = await getServerSession(authOptions);
 
   if (!session) {
     return <p>Loading...</p>;
@@ -12,7 +10,7 @@ export default function UserDashboard() {
 
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar />
       <div className="p-4">
         <h1>Welcome to the User Dashboard, {session.user.name}</h1>
         <p>Your role: {session.user.role}</p>

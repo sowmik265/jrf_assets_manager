@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import pool from '../../../../lib/db'; // MySQL connection file
+import pool from '../../../../lib/db';
 
 export async function POST(req) {
   const { firstName, lastName, email, password } = await req.json();
