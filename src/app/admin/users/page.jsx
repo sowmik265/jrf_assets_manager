@@ -1,5 +1,3 @@
-// app/admin/users/page.jsx
-
 import UsersTable from "@/components/UsersTable";
 
 export default function UsersPage() {

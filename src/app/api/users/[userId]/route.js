@@ -26,26 +26,35 @@ export async function DELETE(req, context) {
 }
 
 // Handle PATCH request to update only the user role
-export async function PATCH(req, { params }) {
+export async function PATCH(req, context) {
+  const params = await context.params; // Await params before accessing its properties
   const { userId } = params; // Extract userId from request params
   const { role } = await req.json(); // Extract role from request body
 
+  // Ensure role is provided
   if (!role) {
     return new Response("Role is required", { status: 400 });
   }
 
   try {
+    // Update the user's role in the database
     const [result] = await pool.execute(
       "UPDATE users SET role = ? WHERE user_id = ?",
       [role, userId]
     );
 
+    // Check if the user was found and updated
     if (result.affectedRows === 0) {
       return new Response("User not found", { status: 404 });
     }
 
-    return new Response("User role updated successfully", { status: 200 });
+    // Return success response
+    return new Response(
+      JSON.stringify({ message: "User role updated successfully" }),
+      { status: 200 }
+    );
   } catch (error) {
+    console.error("Error updating user role:", error);
     return new Response("Error updating user role", { status: 500 });
   }
 }
