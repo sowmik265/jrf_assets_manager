@@ -1,4 +1,4 @@
-import pool from "@/lib/db"; // Import your MySQL connection
+import pool from "@/lib/db"; 
 
 // Handle GET request to fetch all users
 export async function GET() {
