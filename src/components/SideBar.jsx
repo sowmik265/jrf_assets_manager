@@ -4,6 +4,8 @@ import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { FiUsers, FiHome, FiLogOut } from "react-icons/fi";
+import { IoBagAddSharp } from "react-icons/io5";
+import { HiBriefcase } from "react-icons/hi";
 import { useState } from "react";
 
 export default function SideBar() {
@@ -12,7 +14,17 @@ export default function SideBar() {
 
   const menuItems = [
     { name: "Dashboard", href: "/admin", icon: <FiHome size={20} /> },
-    { name: "Users", href: "/admin/users", icon: <FiUsers size={20} /> },
+    { name: "All Users", href: "/admin/users", icon: <FiUsers size={20} /> },
+    {
+      name: "Add Assets",
+      href: "/admin/add-assets",
+      icon: <IoBagAddSharp size={20} />,
+    },
+    {
+      name: "All Assets",
+      href: "/admin/all-assets",
+      icon: <HiBriefcase size={20} />,
+    },
   ];
 
   return (
@@ -47,7 +59,7 @@ export default function SideBar() {
 
         {/* Logout Button */}
         <button
-          onClick={() => signOut({callbackUrl: '/'})}
+          onClick={() => signOut({ callbackUrl: "/" })}
           className="flex items-center gap-3 bg-white text-[#BE1E2D] p-3 rounded-lg hover:bg-gray-200 transition duration-300"
         >
           <FiLogOut size={20} />
